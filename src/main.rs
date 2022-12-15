@@ -38,7 +38,7 @@ async fn main() -> std::io::Result<()> {
             .service(hello)
             .service(postal_code)
     })
-    .bind(("0.0.0.0", 8000))?
+    .bind(("0.0.0.0", 8088))?
     .run()
     .await
 }
