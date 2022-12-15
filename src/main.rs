@@ -12,7 +12,7 @@ async fn hello() -> impl Responder {
 }
 
 #[get("/code/{postal_code}")]
-async fn index2(req: HttpRequest, data: web::Data<AppState>) -> Result<String> {
+async fn postal_code(req: HttpRequest, data: web::Data<AppState>) -> Result<String> {
     let userid: String = req.match_info().query("postal_code").parse().unwrap();
     let info = &data.app_name.get(userid)
     .expect("The postal_code is not in the database");
@@ -36,9 +36,9 @@ async fn main() -> std::io::Result<()> {
             .app_data( web::Data::new(AppState {
                 app_name: postal_code_db.clone()}  ))
             .service(hello)
-            .service(index2)
+            .service(postal_code)
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(("0.0.0.0", 8000))?
     .run()
     .await
 }
