@@ -1,0 +1,24 @@
+If you want to deserilize using serde, you should declare the following structures
+
+#[derive(Serialize, Deserialize)]
+struct DictionaryValue {
+    estado: String,
+    municipio: String,
+    ciudad: String,
+    colonia: Vec<String>
+}
+
+#[derive(Serialize, Deserialize)]
+struct Dictionary {
+    codigos_postales: HashMap<String, DictionaryValue>,
+}
+
+and change
+
+//Current code
+let json: serde_json::Value = serde_json::from_reader(file)
+.expect("file should be proper JSON");
+
+//To this code
+let json: Dictionary = serde_json::from_reader(file)
+.expect("file should be proper JSON");
