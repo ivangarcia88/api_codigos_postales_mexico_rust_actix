@@ -15,8 +15,6 @@ La información fue transformada a un archivo JSON mediante un script, el códig
 Para compilar la aplicación es necesario tener rust instalado. 
 Para instalar rust en ubuntu 22.04 se emplean los siguientes comandos
 
-**Ubuntu 22.04 **
-
 ```plaintext
 sudo apt install rustc
 sudo apt install cargo
@@ -26,14 +24,18 @@ Para compilar el código se emplea el siguiente comando
 ```plaintext
 cargo build --release
 ```
+Para correr el servicio ejecute el siguiente comando:
+
+```plaintext
+cargo run --release
+```
+
+# Running on Ubuntu 22.04
+
 La aplicación no cuenta con un archivo de configuración, en el archivo "main.rs" se encuentra el puerto en el que corre _.bind("0.0.0.0:PORT")_
 Si esta corriendo esta aplicación en ubuntu es posible que requiera habilitar el trafico a este puerto
 
 ```plaintext
 sudo ufw allow 8000
 ```
-Para correr el servicio ejecute el siguiente comando:
 
-```plaintext
-cargo run --release
-```
