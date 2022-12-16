@@ -32,8 +32,11 @@ cargo run --release
 
 # Running on Ubuntu 22.04
 
-La aplicación no cuenta con un archivo de configuración, en el archivo "main.rs" se encuentra el puerto en el que corre _.bind("0.0.0.0:PORT")_
-Si esta corriendo esta aplicación en ubuntu es posible que requiera habilitar el trafico a este puerto
+La aplicación no cuenta con un archivo de configuración, en el archivo "main.rs" se encuentra el puerto en el cual ejecutará la API. 
+
+>.bind("0.0.0.0:8000")
+
+Para correrlo en una distribución de Ubuntu, es necesario habilitar el trafico en el puerto.
 
 ```plaintext
 sudo ufw allow 8000
