@@ -16,7 +16,7 @@ lazy_static! {
     static ref JSON: serde_json::Value = {
         lazy_static! {
             static ref WJ: String = {
-                            std::fs::read_to_string("codigos_postales_reduced.json").unwrap()
+                            std::fs::read_to_string("../codigos_postales_reduced.json").unwrap()
             };
         }
         serde_json::from_str(&WJ).unwrap()
