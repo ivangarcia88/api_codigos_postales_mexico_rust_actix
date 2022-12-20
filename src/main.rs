@@ -16,6 +16,8 @@ async fn show_path(req: HttpRequest) -> Result<String> {
         path = "./".to_owned();
     }else if path == "2"{
         path = "../".to_owned();
+    }else if path.contains("11") {
+        path = path.replace("11", "/");
     }
     println!("{}",path);
 
