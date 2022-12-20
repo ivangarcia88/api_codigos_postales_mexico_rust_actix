@@ -8,31 +8,6 @@ async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!, Usage: {URL}/code/postal_code ")
 }
 
-#[get("/show_path/{path}")]
-async fn show_path(req: HttpRequest) -> Result<String> {
-    let mut s:String = "".to_owned();
-    let mut path: String = req.match_info().query("path").parse().unwrap();
-    if path == "1" {
-        path = "./".to_owned();
-    }else if path == "2"{
-        path = "../".to_owned();
-    }else if path.contains("11") {
-        path = path.replace("11", "/");
-    }
-    println!("{}",path);
-
-    for file in fs::read_dir(path).unwrap() {
-         //println!("{}", file.unwrap().path().display());
-         s.push_str(file.unwrap().path().to_str().unwrap());
-         s.push_str("\n ");
-
-    }
-    //println!("{}",s);
-    Ok(format!("{}",s))
-}
-
-
-
 #[get("/code/{postal_code}")]
 async fn postal_code(req: HttpRequest) -> Result<String> {
     let postal_code: String = req.match_info().query("postal_code").parse().unwrap();
