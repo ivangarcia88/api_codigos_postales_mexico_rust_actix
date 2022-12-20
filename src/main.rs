@@ -1,6 +1,5 @@
 use actix_web::{get, App, HttpResponse, HttpServer, Responder, Result, HttpRequest};
 use lazy_static::lazy_static;
-use std::fs;
 
 
 #[get("/")]
@@ -31,7 +30,6 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .service(hello)
             .service(postal_code)
-            .service(show_path)
     })
     .bind("0.0.0.0:8000")?
     .run()
